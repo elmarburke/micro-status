@@ -11,9 +11,11 @@
     "react-router-dom": "next",
     "react-snapshot": "^1.0.4",
     "redux": "^3.6.0",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "serve": "^5.0.2",
-    "styled-components": "^1.4.4"
+    "styled-components": "^1.4.4",
+    "then-sleep": "^1.0.1"
   },
   "devDependencies": {
     "eslint-config-standard": "^7.0.1",

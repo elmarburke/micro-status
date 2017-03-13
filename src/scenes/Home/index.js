@@ -5,10 +5,20 @@ import Logo from './components/Logo'
 import Compose from './components/Compose'
 import Status from './components/Status'
 import { getAllStatus } from '../../data/status/reducer'
+import { addStatus } from '../../data/status/actions'
 
 class Home extends PureComponent {
   static propTypes = {
-    status: PropTypes.array.isRequired
+    status: PropTypes.array.isRequired,
+    addStatus: PropTypes.func.isRequired
+  }
+
+  handleSubmit = (text) => {
+    this.props.addStatus({
+      _id: `status:${new Date().toISOString()}`,
+      text,
+      time: new Date().toISOString()
+    })
   }
 
   render () {
@@ -17,7 +27,7 @@ class Home extends PureComponent {
     return (
       <div>
         <TopBar><Logo /></TopBar>
-        <Compose />
+        <Compose onSubmit={this.handleSubmit} />
         {status.map(statusItem =>
           <Status
             key={statusItem._id}
@@ -33,4 +43,6 @@ const mapStateToProps = (state) => ({
   status: getAllStatus(state)
 })
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, {
+  addStatus
+})(Home)

@@ -36,20 +36,32 @@ const SendButton = styled.button`
     outline: none;
   }
 `
-console.log(ContentWrapper)
 
-const Compose = () => (
-  <ContentWrapper>
-    <form>
-      <TextArea
-        type='text'
-        placeholder='Was passiert gerade?'
-      />
-      <ComposeBottom>
-        <SendButton>Teilen</SendButton>
-      </ComposeBottom>
-    </form>
-  </ContentWrapper>
-)
+const Compose = ({ onSubmit }) => {
+  let ref
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    onSubmit(ref.value)
+    ref.value = ''
+  }
+
+  return (
+    <ContentWrapper>
+      <form onSubmit={handleSubmit}>
+        <TextArea
+          type='text'
+          placeholder='Was passiert gerade?'
+          innerRef={_ref_ => { ref = _ref_ }}
+        />
+        <ComposeBottom>
+          <SendButton>Teilen</SendButton>
+        </ComposeBottom>
+      </form>
+    </ContentWrapper>
+  )
+}
+Compose.propTypes = {
+  onSubmit: React.PropTypes.func.isRequired
+}
 
 export default Compose
