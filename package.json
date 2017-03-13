@@ -1,0 +1,39 @@
+{
+  "name": "micro-status",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-helmet": "^4.0.0",
+    "react-redux": "^5.0.3",
+    "react-router-dom": "next",
+    "react-snapshot": "^1.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "serve": "^5.0.2",
+    "styled-components": "^1.4.4"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^7.0.1",
+    "eslint-config-standard-react": "^4.3.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "react-scripts": "0.9.5",
+    "sw-precache": "^5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && react-snapshot && sw-precache --config=sw-precache-config.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "now-start": "serve build/"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "standard",
+      "standard-react"
+    ]
+  }
+}
