@@ -6,7 +6,7 @@
 - Added SW to index
 - manifest.json
 - added standard to linting
-- added redux + react-redux + redux-thunk
+- added redux + react-redux + redux-promise-middleware
 
 ---
 

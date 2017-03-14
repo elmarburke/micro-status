@@ -5,12 +5,17 @@ import Logo from './components/Logo'
 import Compose from './components/Compose'
 import Status from './components/Status'
 import { getAllStatus } from '../../data/status/reducer'
-import { addStatus } from '../../data/status/actions'
+import { addStatus, fetchStatus } from '../../data/status/actions'
 
 class Home extends PureComponent {
   static propTypes = {
     status: PropTypes.array.isRequired,
-    addStatus: PropTypes.func.isRequired
+    addStatus: PropTypes.func.isRequired,
+    fetchStatus: PropTypes.func.isRequired
+  }
+
+  componentDidMount () {
+    this.props.fetchStatus()
   }
 
   handleSubmit = (text) => {
@@ -44,5 +49,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-  addStatus
+  addStatus,
+  fetchStatus
 })(Home)
