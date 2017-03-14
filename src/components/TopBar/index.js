@@ -2,14 +2,15 @@ import React from 'react'
 import TopBarWrapper from './components/TopBarWrapper'
 import Logo from './components/Logo'
 import HeaderLink from './components/HeaderLink'
-
+import Navigation from './components/Navigation'
 
 const TopBar = () => (
   <TopBarWrapper>
     <Logo />
-    <div>
+    <Navigation>
       <HeaderLink to='/'>Home</HeaderLink>
-    </div>
+      <HeaderLink to='/info'>Info</HeaderLink>
+    </Navigation>
   </TopBarWrapper>
 )
 

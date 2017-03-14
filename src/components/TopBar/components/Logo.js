@@ -5,7 +5,7 @@ const LogoWrapper = styled.div`
   color: #dcdcdc;
 `
 const Dot = styled.span`
-  &:after{
+  &:after {
     color: #9b58b5;
     content: '▲';
     font-size: bigger;
