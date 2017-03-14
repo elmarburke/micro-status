@@ -1,14 +1,13 @@
 import React, { PureComponent, PropTypes } from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
-import ContentWrapper from '../ContentWrapper'
+import ContentWrapper from '../../../../components/ContentWrapper'
 
 const StatusWrapper = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 5em;
-  padding: .5em 3em;
 `
 
 const StatusFooter = styled.footer`

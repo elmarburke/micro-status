@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const LogoWrapper = styled.div`
   color: #dcdcdc;
-  padding: 1.5em 3em;
 `
 const Dot = styled.span`
   &:after{

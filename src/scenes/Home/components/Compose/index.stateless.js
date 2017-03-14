@@ -1,5 +1,5 @@
 import React from 'react'
-import ContentWrapper from '../ContentWrapper'
+import ContentWrapper from '../../components/ContentWrapper'
 import ComposeFooter from './components/ComposeFooter'
 import SendButton from './components/SendButton'
 import TextArea from './components/TextArea'
