@@ -1,7 +1,12 @@
 import React, { PureComponent, PropTypes } from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
-import ContentWrapper from '../../../../components/ContentWrapper'
+import ContentWrapper from '../ContentWrapper'
+import { Link } from 'react-router-dom'
+
+const DetailsLink = styled(Link)`
+  color: #777777;
+`
 
 const StatusWrapper = styled.article`
   display: flex;
@@ -30,7 +35,9 @@ class Compose extends PureComponent {
         <StatusWrapper>
           {status.text}
           <br />
-          <StatusFooter>{readableDate}</StatusFooter>
+          <StatusFooter>
+            <DetailsLink to={`/status/${status._id}`}>{readableDate}</DetailsLink>
+          </StatusFooter>
         </StatusWrapper>
       </ContentWrapper>
     )

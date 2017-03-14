@@ -7,7 +7,7 @@ const ContentWrapper = styled.div`
   background-color: #363636;
   border-bottom: 2px solid #4a4a4a;
   color: #dcdcdc;
-  ${({noPadding}) => noPadding ? '' : 'padding: 1.5em 3em;'}
+  ${({noPadding}) => noPadding ? '' : 'padding: 1em 3em;'}
 
   &:last-child {
     border-bottom: none;

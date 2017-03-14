@@ -1,4 +1,4 @@
-import { ADD, FETCH } from './actions'
+import { ADD, FETCH_LIST, FETCH_ITEM } from './actions'
 
 import { normalize, schema } from 'normalizr'
 
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
         },
         all: [action.payload._id, ...state.all]
       }
-    case `${FETCH}_FULFILLED`:
+    case `${FETCH_LIST}_FULFILLED`:
       const normalizedData = normalize(action.payload, statusListSchema)
       return {
         ...state,
@@ -45,11 +45,21 @@ const reducer = (state = initialState, action) => {
         },
         all: normalizedData.result
       }
+    case `${FETCH_ITEM}_FULFILLED`:
+      const normalizedItem = normalize(action.payload, statusSchema)
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          ...normalizedItem.entities.status
+        }
+      }
     default:
       return state
   }
 }
 
 export const getAllStatus = (state) => state.data.status.all.map(id => state.data.status.byId[id])
+export const getOneStatus = (state, id) => state.data.status.byId[id]
 
 export default reducer

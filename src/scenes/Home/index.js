@@ -2,7 +2,7 @@ import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import TopBar from '../../components/TopBar'
 import Compose from './components/Compose'
-import Status from './components/Status'
+import Status from '../../components/Status'
 import { getAllStatus } from '../../data/status/reducer'
 import { addStatus, fetchStatus } from '../../data/status/actions'
 
