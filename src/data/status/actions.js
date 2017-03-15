@@ -20,8 +20,6 @@ export const fetchStatus = () => ({
 export const addStatus = (status) => {
   return {
     type: ADD,
-    // Hier kannst du dann in der Payload ein Promise einfügen.
-    // redux-promise macht die magie.
     payload: db.put(status).then(result => db.get(result.id))
   }
 }
