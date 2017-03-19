@@ -6,21 +6,16 @@ export const ADD = 'data/status/ADD'
 export const SUBSCRIBED = 'data/status/SUBSCRIBED'
 export const UNSUBSCRIBED = 'data/status/UNSUBSCRIBED'
 export const CHANGED = 'data/status/CHANGED'
+export const REPLICATION_STARTED = 'data/status/REPLICATION_STARTED'
+export const REPLICATION_STOPPED = 'data/status/REPLICATION_STOPPED'
 
 const db = new PouchDB('micro-status')
-db.sync(
-  'http://localhost:5984/micro-status',
-  {
-    live: true,
-    retry: true
-  }
-);
-
 
 export const fetchStatusById = (id) => ({
   type: FETCH_ITEM,
   payload: db.get(id)
 })
+
 
 export const fetchStatus = () => ({
   type: FETCH_LIST,
@@ -57,3 +52,35 @@ export const unsubscribeFromChangesFeed = (feed) => {
 
   return {type: UNSUBSCRIBED}
 }
+
+
+export const startReplication = () => ((dispatch, getState) => {
+  const sync = db.sync(
+    'http://localhost:5984/micro-status',
+    {
+      live: true,
+      retry: true
+    }
+  );
+
+  sync.pull.on('active', () => {
+    const replicationRunning = getState().data.status.replicationRunning
+
+    if(!replicationRunning) {
+      dispatch({type: REPLICATION_STARTED})
+    }
+  }).on('paused', (err) => {
+    const replicationRunning = getState().data.status.replicationRunning
+
+    if (replicationRunning && err) {
+      dispatch({ type: REPLICATION_STOPPED })
+    }
+
+    if (!replicationRunning && !err) {
+      dispatch({ type: REPLICATION_STARTED })
+    }
+  })
+
+
+  dispatch({type: REPLICATION_STARTED})
+})

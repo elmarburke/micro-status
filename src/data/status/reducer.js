@@ -1,4 +1,4 @@
-import { ADD, FETCH_LIST, FETCH_ITEM, CHANGED } from './actions'
+import { ADD, FETCH_LIST, FETCH_ITEM, CHANGED, REPLICATION_STOPPED, REPLICATION_STARTED } from './actions'
 
 import { normalize, schema } from 'normalizr'
 
@@ -22,6 +22,16 @@ const reducer = (state = initialState, action) => {
   }
 
   switch (action.type) {
+    case REPLICATION_STARTED:
+      return {
+        ...state,
+        replicationRunning: true
+      }
+    case REPLICATION_STOPPED:
+      return {
+        ...state,
+        replicationRunning: false
+      }
     case `${ADD}_PENDING`:
       return {
         ...state,
