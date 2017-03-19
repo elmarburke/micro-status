@@ -28,7 +28,7 @@ export const addStatus = (status) => {
   }
 }
 
-const streamValueRecived = changes => ({
+const streamValueReceived = changes => ({
   type: CHANGED,
   payload: changes.doc
 })
@@ -41,7 +41,7 @@ export const subscribeToPouchChangesFeed = () => (dispatch) => {
     include_docs: true,
     since: 'now',
     live: true
-  }).on('change', (result) => dispatch(streamValueRecived(result)))
+  }).on('change', (result) => dispatch(streamValueReceived(result)))
 }
 
 export const unsubscribeFromchangesFeed = (feed) => {
