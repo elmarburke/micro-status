@@ -1,4 +1,4 @@
-import { ADD, FETCH_LIST, FETCH_ITEM } from './actions'
+import { ADD, FETCH_LIST, FETCH_ITEM, CHANGED } from './actions'
 
 import { normalize, schema } from 'normalizr'
 
@@ -26,6 +26,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         saving: true
       }
+    case CHANGED:
     case `${ADD}_FULFILLED`:
       return {
         ...state,
