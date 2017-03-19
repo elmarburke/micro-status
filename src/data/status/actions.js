@@ -8,6 +8,14 @@ export const UNSUBSCRIBED = 'data/status/UNSUBSCRIBED'
 export const CHANGED = 'data/status/CHANGED'
 
 const db = new PouchDB('micro-status')
+db.sync(
+  'http://localhost:5984/micro-status',
+  {
+    live: true,
+    retry: true
+  }
+);
+
 
 export const fetchStatusById = (id) => ({
   type: FETCH_ITEM,
