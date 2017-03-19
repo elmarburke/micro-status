@@ -4,7 +4,7 @@ import TopBar from '../../components/TopBar'
 import Compose from './components/Compose'
 import Status from '../../components/Status'
 import { getAllStatus } from '../../data/status/reducer'
-import { addStatus, fetchStatus, subscribeToPouchChangesFeed, unsubscribeFromchangesFeed } from '../../data/status/actions'
+import { addStatus, fetchStatus, subscribeToPouchChangesFeed, unsubscribeFromChangesFeed } from '../../data/status/actions'
 
 class Home extends PureComponent {
   static propTypes = {
@@ -12,7 +12,7 @@ class Home extends PureComponent {
     addStatus: PropTypes.func.isRequired,
     fetchStatus: PropTypes.func.isRequired,
     subscribeToPouchChangesFeed: PropTypes.func.isRequired,
-    unsubscribeFromchangesFeed: PropTypes.func.isRequired
+    unsubscribeFromChangesFeed: PropTypes.func.isRequired
   }
 
   componentDidMount () {
@@ -58,5 +58,5 @@ export default connect(mapStateToProps, {
   addStatus,
   fetchStatus,
   subscribeToPouchChangesFeed,
-  unsubscribeFromchangesFeed
+  unsubscribeFromChangesFeed
 })(Home)

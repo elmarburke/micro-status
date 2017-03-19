@@ -52,7 +52,7 @@ export const subscribeToPouchChangesFeed = () => (dispatch) => {
   }).on('change', (result) => dispatch(streamValueReceived(result)))
 }
 
-export const unsubscribeFromchangesFeed = (feed) => {
+export const unsubscribeFromChangesFeed = (feed) => {
   feed.cancel()
 
   return {type: UNSUBSCRIBED}
