@@ -6,6 +6,7 @@ const statusSchema = new schema.Entity('status', {}, {idAttribute: '_id'})
 const statusListSchema = [ statusSchema ]
 
 const initialState = {
+  replicationRunning: false,
   byId: {},
   all: [],
   loading: false,
