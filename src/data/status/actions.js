@@ -1,4 +1,5 @@
 import PouchDB from 'pouchdb'
+import { getReplicationStatus } from './reducer'
 
 export const FETCH_LIST = 'data/status/FETCH_LIST'
 export const FETCH_ITEM = 'data/status/FETCH_ITEM'
@@ -64,13 +65,13 @@ export const startReplication = () => ((dispatch, getState) => {
   );
 
   sync.pull.on('active', () => {
-    const replicationRunning = getState().data.status.replicationRunning
+    const replicationRunning = getReplicationStatus(getState())
 
     if(!replicationRunning) {
       dispatch({type: REPLICATION_STARTED})
     }
   }).on('paused', (err) => {
-    const replicationRunning = getState().data.status.replicationRunning
+    const replicationRunning = getReplicationStatus(getState())
 
     if (replicationRunning && err) {
       dispatch({ type: REPLICATION_STOPPED })
