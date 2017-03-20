@@ -38,7 +38,6 @@ const reducer = (state = initialState, action) => {
         saving: true
       }
     case CHANGED:
-    case `${ADD}_FULFILLED`:
       return {
         ...state,
         byId: {
