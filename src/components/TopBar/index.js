@@ -4,6 +4,7 @@ import TopBarWrapper from './components/TopBarWrapper'
 import Logo from './components/Logo'
 import HeaderLink from './components/HeaderLink'
 import Navigation from './components/Navigation'
+import { getReplicationStatus } from '../../data/status/reducer'
 
 class TopBar extends PureComponent {
   static propTypes = {
@@ -28,7 +29,7 @@ class TopBar extends PureComponent {
 
 
 const mapStateToProps = (state) => ({
-  replicationRunning: state.data.status.replicationRunning
+  replicationRunning: getReplicationStatus(state)
 })
 
 export default connect(mapStateToProps)(TopBar)

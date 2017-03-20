@@ -72,5 +72,6 @@ const reducer = (state = initialState, action) => {
 
 export const getAllStatus = (state) => state.data.status.all.map(id => state.data.status.byId[id])
 export const getOneStatus = (state, id) => state.data.status.byId[id]
+export const getReplicationStatus = (state) => state.data.status.replicationRunning
 
 export default reducer
