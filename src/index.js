@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import configureStore from './configureStore'
 import './index.css'
+import { startReplication } from './data/status/actions'
 
 // const state = {
 //   data: {
@@ -18,6 +19,8 @@ import './index.css'
 // }
 
 const store = configureStore(/*state*/)
+
+store.dispatch(startReplication())
 
 render(
   <Provider store={store}>
